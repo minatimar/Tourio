@@ -4,7 +4,9 @@ import { Inter } from "@next/font/google";
 import { Data } from "../helpers/db.js";
 import { useState } from "react";
 import Card from "../components/Card/Card.js";
-
+import TitleBar from "../components/TitleBar/TitleBar.js";
+import styled from "styled-components";
+import CardList from "../components/CardList/CardList.js";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -20,13 +22,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ul>
-        {data.map((newData) => (
-          <li key={newData.id}>
-            <Card data={newData} />
-          </li>
-        ))}
-      </ul>
+      <StyledApp>
+        <TitleBar />
+        <CardList data={data} />
+      </StyledApp>
     </>
   );
 }
+const StyledApp = styled.div`
+  width: 50%;
+  border: solid 0.5px black;
+  margin-left: 25%;
+  margin-right: 25%;
+`;
