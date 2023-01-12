@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import { Data } from "../helpers/db.js";
 import { useState } from "react";
+import Card from "../components/Card/Card.js";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,21 +19,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1> Tourio </h1>
-      <button>x</button>
+
       <ul>
         {data.map((newData) => (
           <li key={newData.id}>
-            <div>
-              <Image
-                src={newData.image}
-                width={300}
-                height={300}
-                alt={newData.name}
-              />
-              <div>{newData.name}</div>
-              <p>Location: {newData.location}</p>
-            </div>
+            <Card data={newData} />
           </li>
         ))}
       </ul>
